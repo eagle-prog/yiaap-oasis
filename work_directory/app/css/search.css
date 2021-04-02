@@ -835,10 +835,10 @@
      min-width: unset;
      max-width: unset;
  }
- .landing .noscript-hide {
+ .top-container .noscript-hide {
      height: 65px;
  }
- .landing .noscript-hide .buttons {
+ .top-container .noscript-hide .buttons {
      position: absolute;
      top: 10px;
      bottom: 0;
@@ -1191,7 +1191,7 @@
      position: relative;
      top: 0px;
  }
- .landing .logo
+ .top-container .logo
  {
      height: 65px;
      display: flex;
@@ -1247,7 +1247,7 @@
      top: 17px;
      width: 50px;
  }
- .landing .logo img
+ .top-container .logo img
  {
      border: 0;
      width: 3in;
