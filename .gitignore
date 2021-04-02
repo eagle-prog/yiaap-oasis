@@ -2,3 +2,4 @@
 .htpasswd
 work_directory/*
 !work_directory/app
+!work_directory/data
