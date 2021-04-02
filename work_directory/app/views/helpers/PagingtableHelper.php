@@ -173,7 +173,7 @@ class PagingtableHelper extends Helper
                             class="delete-selected-rows"
                             href="<?= $base_url ?>">
                             <img
-                                src='<?=C\SHORT_BASE_URL ?>resources/delete.png'
+                                src='/wd/resources/delete.png'
                                 alt='<?= tl('manageusers_element_delete') ?>'/>
                         </a>
                     </span> <?php
@@ -305,7 +305,7 @@ class PagingtableHelper extends Helper
                                 class="delete-selected-rows"
                                 href="<?= $base_url ?>">
                                 <img
-                                    src='<?=C\SHORT_BASE_URL ?>resources/delete.png'
+                                    src='/wd/resources/delete.png'
                                     alt='<?= tl('manageusers_element_delete') ?>'/>
                             </a>
                         </span> <?php
