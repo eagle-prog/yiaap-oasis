@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
+<head>
+<!-- no cache headers -->
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+	
+<meta name="keywords" content="The International Portal for Sportster and Buell Motorcycle Enthusiasts, sportsters, xlforum, sportster motorcycle forum, 883c, 1200c, hugger, harley, harley davidson, how to, buell" />
+<meta name="description" content="" />
+	
+
+<meta name="author" content="The Sportster and Buell Motorcycle Forum" />
+<meta name="copyright" content="Copyright (c) 2016 by The Sportster and Buell Motorcycle Forum" />
+<meta name="rating" content="general" />
+
+<!-- end no cache headers -->
+
+<title>The International Portal for Sportster and Buell Motorcycle Enthusiasts - The Sportster and Buell Motorcycle Forum</title>
+
+<!-- CSS Stylesheet -->
+<style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.5 CSS
+* Style: 'Legacy'; Style ID: 14
+*/
+@import url("/vbportal/forums/clientscript/vbulletin_css/style-be5282e1-00014.css");
+</style>
+<link rel="stylesheet" type="text/css" href="/vbportal/forums/clientscript/vbulletin_important.css?v=385" />
+
+
+<!-- / CSS Stylesheet -->
+
+
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js?v=385"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
+<script type="text/javascript">
+<!--
+var SESSIONURL = "";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "/vbportal/forums/images/misc";
+// -->
+</script>
+
+
+
+<script type="text/javascript">
+<!--
+function openwho(threadid) {
+	return openWindow("/vbportal/forums/misc.php?" + SESSIONURL + "do=whoposted&threadid=" + threadid, 230, 300);
+}
+// -->
+</script>
+
+<script type="text/javascript" src="/vbportal/forums/clientscript/vbulletin_global.js?v=385"></script>
+<script type="text/javascript" src="/vbportal/forums/clientscript/vbulletin_menu.js?v=385"></script>
+
+<link rel="alternate" type="application/rss+xml" title="The Sportster and Buell Motorcycle Forum RSS News Feed" href="/vbportal/external.php?type=rss2" />
+
+
+
+<script type="text/javascript">
+<!--
+window.onload = function() {
+
+}
+//-->
+</script>
+
+</head>
+<body>
+</body>
+</html>

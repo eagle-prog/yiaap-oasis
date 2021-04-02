@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>What is Agile made up of and the progression | Tech Thoughts with Bowen</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://bowenchan100w.wordpress.com/xmlrpc.php">
+
+<link rel="alternate" type="application/rss+xml" title="Tech Thoughts with Bowen &raquo; Feed" href="https://bowenchan100w.wordpress.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Tech Thoughts with Bowen &raquo; Comments Feed" href="https://bowenchan100w.wordpress.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Tech Thoughts with Bowen &raquo; What is Agile made up of and the&nbsp;progression Comments Feed" href="https://bowenchan100w.wordpress.com/2014/09/23/the-agile-team-and-backlogs/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+function addLoadEvent(func){var oldonload=window.onload;if(typeof window.onload!='function'){window.onload=func;}else{window.onload=function(){oldonload();func();}}}
+/* ]]> */
+</script>
+<link rel='stylesheet' id='zoren-bitter-css'  href='https://fonts.googleapis.com/css?family=Bitter:400,700,400italic' type='text/css' media='all' />
+<link rel='stylesheet' id='zoren-open-sans-css'  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-5' href='https://s0.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1387483371g' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-6' href='https://s1.wp.com/_static/??/wp-content/mu-plugins/post-flair/sharing/sharing.css,/wp-content/themes/h4/global.css?m=1435590157j' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-0' href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1377793621g' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://bowenchan100w.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='The Amazing World of&nbsp;Agiles' href='https://bowenchan100w.wordpress.com/2014/09/10/the-amazing-world-of-agiles/' />
+<link rel='next' title='Agile Sprint Retrospective' href='https://bowenchan100w.wordpress.com/2014/09/29/agile-sprint-retrospective/' />
+<meta name="generator" content="WordPress.com" />
+<link rel='canonical' href='https://bowenchan100w.wordpress.com/2014/09/23/the-agile-team-and-backlogs/comment-page-1/#comments' />
+<link rel='shortlink' href='http://wp.me/p52cdR-a' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fbowenchan100w.wordpress.com%2F2014%2F09%2F23%2Fthe-agile-team-and-backlogs%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fbowenchan100w.wordpress.com%2F2014%2F09%2F23%2Fthe-agile-team-and-backlogs%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What is Agile made up of and the progression" />
+<meta property="og:url" content="https://bowenchan100w.wordpress.com/2014/09/23/the-agile-team-and-backlogs/" />
+<meta property="og:description" content="Figure 1: Comparison of Agile versus the Norm. A site of how Agile is run compared to a normal team. Retrieved from September 23, 2014. The Agile Team I&#039;ve explained what Agile and the start, but d..." />
+<meta property="article:published_time" content="2014-09-23T03:22:34+00:00" />
+<meta property="article:modified_time" content="2014-12-01T17:07:25+00:00" />
+<meta property="og:site_name" content="Tech Thoughts with Bowen" />
+<meta property="og:image" content="http://www.mountaingoatsoftware.com/uploads/blog/SprintBacklog.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@wordpressdotcom" />
+<meta name="twitter:image" content="http://blogs.seapine.com/wp-content/uploads/2012/02/SelfOrgTeam_9_0611_v2.png?w=240" />
+<meta name="twitter:card" content="summary" />
+<meta property="fb:app_id" content="249643311490" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<link rel="shortcut icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png" />
+<link rel='openid.server' href='https://bowenchan100w.wordpress.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://bowenchan100w.wordpress.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://bowenchan100w.wordpress.com/osd.xml" title="Tech Thoughts with Bowen" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://wordpress.com/opensearch.xml" title="WordPress.com" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Tech Thoughts with Bowen" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://bowenchan100w.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico" /><meta name="title" content="What is Agile made up of and the&nbsp;progression | Tech Thoughts with Bowen on WordPress.com" />
+<meta name="description" content="Figure 1: Comparison of Agile versus the Norm. A site of how Agile is run compared to a normal team. Retrieved from September 23, 2014. http://bit.ly/1v4YDvO The Agile Team I&#039;ve explained what Agile and the start, but do you know what is Agile? Agile is a very interesting methodology. The main reason for this is&hellip;" />
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #EEEEEE; }
+</style>
+		<script type="text/javascript" src="//c.amazon-adsystem.com/aax2/amzn_ads.js"></script>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<style type="text/css" id="custom-colors-css">
+body { background-color: #EEEEEE;}
+h1.widget-title, h1.sidetitle, h2.widgettitle, .page-title { background-color: #C6C6C6;}
+.site-footer, #infinite-footer { border-top-color: #C6C6C6;}
+#masthead, .site-image { border-bottom-color: #C6C6C6;}
+.main-navigation a:hover, .main-navigation a:active, .main-navigation .current-menu-item > a, .main-navigation .current_page_item > a { color: #BABABA;}
+.main-navigation ul ul li { border-bottom-color: #BABABA;}
+.main-navigation ul ul, #infinite-handle span, .entry-format-badge { background-color: #A7A7A7;}
+.main-navigation ul ul:before { border-bottom-color: #A7A7A7;}
+.main-navigation ul ul a:hover, .main-navigation ul ul a:active, .main-navigation ul ul .current-menu-item > a, .main-navigation ul ul .current_page_item > a { background-color: #9A9A9A;}
+a.entry-format-badge:hover { background-color: #878787;}
+.site-title a, .site-description { color: #3498db;}
+.site-title a, .site-description { color: #3498DB;}
+.main-navigation li, .main-navigation a { color: #B5D9F1;}
+.main-navigation li, .main-navigation a { color: #3498DB;}
+h1.widget-title, h1.sidetitle, h2.widgettitle, #respond h3, h2.comments-title { color: #74B8E6;}
+h1.widget-title, h1.sidetitle, h2.widgettitle, #respond h3, h2.comments-title { color: #0A446A;}
+a, .site-footer, .widget ul li a:hover { color: #1abc9c;}
+a, .site-footer, .widget ul li a:hover { color: #1ABC9C;}
+.taglist ul li a:hover, ol.commentlist li .reply a:hover { background-color: #1abc9c;}
+a:hover, a:focus, a:active { color: #107964;}
+.taglist ul li a, ol.commentlist li .reply a { background-color: #81EDD8;}
+blockquote { border-left-color: #81EDD8;}
+.rtl blockquote { border-right-color: #81EDD8;}
+</style>
+</head>
+
+<body>
+
+</body>
+</html>

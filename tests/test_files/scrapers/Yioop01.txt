@@ -1,0 +1,62 @@
+﻿    <!DOCTYPE html>
+    <html lang="en-US" dir="ltr">
+        <head>
+        <title>PHP Search Engine - Yioop!</title>
+            <meta name="description" content="PHP Crawler and Search Engine Software" />
+        <meta name="Author" content="Chris Pollett" />
+        <meta charset="utf-8" />
+                <link rel="icon" href="https://yioop.com/favicon.ico" />
+        <link rel="stylesheet" type="text/css"
+            href="https://www.yioop.com/css/search.css" />
+                <link rel="stylesheet" type="text/css"
+            href="https://www.yioop.com/?c=resource&a=get&f=css&n=auxiliary.css" />
+                <link rel="search" type="application/opensearchdescription+xml"
+            href="https://yioop.com/yioopbar.xml"
+            title="Content search" />
+                <style type="text/css">
+                    body
+            {
+                background-color: #FFFFFF;
+            }
+                        .frame,
+            .icon-upload,
+            .current-activity,
+            .light-content,
+            .small-margin-current-activity,
+            .suggest-list li span.unselected
+            {
+                background-color: #FFFFFF;
+            }
+            .icon-upload
+            {
+                color: #FFFFFF;
+            }
+                        .activity-menu h2
+            {
+                background-color: #88AA44;
+            }
+            .light-content,
+            .mobile .light-content
+            {
+                border: 16px solid #88AA44;
+            }
+                        .display-ad p,
+            p.start-ad,
+            .top-color,
+            .suggest-list,
+            .suggest-list li,
+            .suggest-list li span.selected,
+            .search-box {
+                background-color: #EEEEFF;
+            }
+            .top-bar,
+            .landing-top-bar
+            {
+                background: #EEEEFF;
+                background: linear-gradient(to top, #FFFFFF 0%, #EEEEFF 30%, #EEEEFF 70%);
+            }
+                    </style>
+        </head>
+<body>
+        </body>
+    </html>

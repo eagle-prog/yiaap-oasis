@@ -1,0 +1,4 @@
+.idea/
+.htpasswd
+work_directory/*
+!work_directory/app

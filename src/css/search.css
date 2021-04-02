@@ -1,0 +1,3772 @@
+/**
+ * SeekQuarry/Yioop --
+ * Open Source Pure PHP Search Engine, Crawler, and Indexer
+ *
+ * Copyright (C) 2009 - 2021  Chris Pollett chris@pollett.org
+ *
+ * LICENSE:
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * END LICENSE
+ *
+ * @author Chris Pollett chris@pollett.org
+ * @license https://www.gnu.org/licenses/ GPL3
+ * @link https://www.seekquarry.com/
+ * @copyright 2009 - 2021
+ * @filesource
+ */
+/*
+    search.css
+    Main stylesheet for Yioop search engine
+ */
+html, body, .subsearch ul
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+/*
+   We begin with some generic global styles
+   and classes
+ */
+h1.slim,
+h2,
+h3,
+h4
+{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+h1.slim
+{
+    font-size: 24pt;
+}
+p
+{
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+input:disabled
+{
+    color:#555;
+}
+.mobile p
+{
+    min-width:300px;
+    width:auto;
+}
+.mobile pre
+{
+   white-space:pre-wrap;
+}
+.echo-link
+{
+    color: green;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.hidden
+{
+    visibility: hidden;
+}
+.no-bullet
+{
+    list-style-type: none;
+}
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
+}
+.clear
+{
+    clear:both;
+}
+.none
+{
+    display:none;
+}
+.no-bold
+{
+    font-weight:normal;
+}
+.no-margin
+{
+    margin: 0;
+}
+.no-min-height
+{
+    min-height: unset !important;
+}
+.inline div,
+.inline form,
+.inline p
+{
+    display: inline-block;
+}
+.inline ul,
+.inline li
+{
+    display: inline;
+    list-style-type: none;
+}
+.inline li
+{
+    border-right: 2px solid black;
+    padding:.05in;
+}
+.inline li:first-child
+{
+    border-left: 2px solid black;
+    padding:.03in;
+}
+.indent
+{
+    text-indent: 0.25in;
+}
+span.indent1
+{
+    margin-left: 0.25in;
+}
+span.indent2
+{
+    margin-left: 0.5in;
+}
+span.indent3
+{
+    margin-left: 0.75in;
+}
+span.indent4
+{
+    margin-left: 1in;
+}
+span.indent5
+{
+    margin-left: 1.25in;
+}
+.mobile .indent
+{
+    text-indent: 10px;
+}
+.mobile span.indent1
+{
+    margin-left: 10px;
+}
+.mobile span.indent2
+{
+    margin-left: 20px;
+}
+.mobile span.indent3
+{
+    margin-left: 30px;
+}
+.mobile span.indent4
+{
+    margin-left: 40px;
+}
+.mobile span.indent5
+{
+    margin-left: 50px;
+}
+.html-ltr .float-opposite
+{
+    float: right;
+}
+.html-rtl .float-opposite
+{
+    float: left;
+}
+.html-ltr .float-same
+{
+    float: left;
+}
+.html-rtl .float-same
+{
+    float: right;
+}
+.align-right
+{
+    text-align: right;
+}
+.align-left
+{
+    text-align: left;
+}
+.align-center
+{
+    text-align: center;
+}
+.html-ltr .align-opposite
+{
+    text-align: right;
+}
+.html-rtl .align-opposite
+{
+    text-align: left;
+}
+.blockquote
+{
+    margin-left: 0.3in;
+    margin-right: 0.3in;
+}
+.mobile .blockquote
+{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.tiny-font
+{
+    font-size:9.5pt !important;
+}
+.medium-large
+{
+    font-size:20pt !important;
+}
+.small-font
+{
+    font-size:12pt !important;
+}
+.smaller-font
+{
+    font-size:smaller !important;
+}
+.medium-font
+{
+    font-size:16pt !important;
+}
+.big-font
+{
+    font-size:20pt !important;
+}
+.bigger-font
+{
+    font-size:bigger !important;
+}
+.huge-font
+{
+    font-size:26pt !important;
+}
+.mobile .small-font
+{
+    font-size:10pt !important;
+}
+.mobile .medium-font
+{
+    font-size:12pt !important;
+}
+.mobile .big-font
+{
+    font-size:14pt !important;
+}
+.mobile .huge-font
+{
+    font-size:20pt !important;
+}
+.black
+{
+    color: black;
+}
+.red
+{
+    color: #D00;
+}
+.green
+{
+    color: green;
+}
+.highlight,
+.back-red
+{
+    background-color: red;
+}
+.back-aliceblue
+{
+    background-color: aliceblue;
+}
+.back-ghostwhite
+{
+    background-color: ghostwhite;
+}
+.back-ivory
+{
+    background-color: ivory;
+}
+.back-honeydew
+{
+    background-color: honeydew;
+}
+.back-floralwhite
+{
+    background-color: floralwhite;
+}
+.back-lavender
+{
+    background-color: lavender;
+}
+.back-green
+{
+    background-color: green;
+}
+.back-light-coral
+{
+    background-color: lightcoral;
+}
+.back-light-blue
+{
+    background-color: lightblue;
+}
+.back-light-green
+{
+    background-color: lightgreen;
+}
+.back-light-gray,
+.back-gray
+{
+    background-color: lightgray;
+}
+.gray
+{
+    color: #555;
+}
+.light-gray
+{
+    color: #BBB;
+}
+.back-dark-gray
+{
+    background-color: #CCC;
+}
+.gray-link
+{
+    color: #555;
+    text-decoration: none;
+}
+.gray-link:hover
+{
+    text-decoration: underline;
+}
+.white
+{
+    color: white;
+}
+a.echo-link
+{
+    text-decoration: none;
+}
+a.echo-link:hover
+{
+    text-decoration: underline;
+}
+.back-yellow
+{
+    background-color: yellow;
+}
+.clear
+{
+    clear: both;
+}
+.width-half
+{
+    width:50%;
+}
+.width-three-quarter
+{
+    width:75%;
+}
+.width-half img,
+.width-three-quarter img
+{
+    width:100%;
+}
+.frame
+{
+    border: 1px solid #ccc;
+    position: relative;
+}
+.solid-border {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.dashed-border {
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+}
+
+.very-narrow-field
+{
+    width: 1in;
+    font-size:10pt;
+    height:25px;
+}
+.mobile .very-narrow-field
+{
+    width: 80px;
+}
+.narrow-field
+{
+    width: 1.9in;
+}
+.mobile .narrow-field
+{
+    width: 100px;
+}
+.wide-field
+{
+    width: 3in;
+}
+.mobile .wide-field
+{
+    width: 150px;
+}
+.extra-wide-field
+{
+    width: 5in;
+}
+.mobile .extra-wide-field
+{
+    width: 200px;
+}
+.range-field
+{
+    border: 1px solid gray;
+    display:inline-block;
+    margin: 3px;
+    padding: 3px;
+}
+.range-field hr
+{
+    width: 7%;
+}
+.tall-text-area
+{
+    height: 4in;
+    width: 100%;
+}
+.small-text-area
+{
+    height: 2.5in;
+    width: 100%;
+}
+.mobile .tall-text-area
+{
+    width: 90%;
+}
+.medium-text-area
+{
+    height: 2.5in;
+    width: 100%;
+}
+.mobile .medium-text-area
+{
+    width: 90%;
+}
+.short-text-area
+{
+    width: 100%;
+    height: 1in;
+}
+.mobile .short-text-area
+{
+    width: 90%;
+}
+.short-text-area-two
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    height: 1in;
+}
+.short-text-area-three
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    height: .7in;
+}
+.center
+{
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+.bold
+{
+    font-weight: bold;
+}
+.sides-margin
+{
+    margin-left:0.6in;
+    margin-right:0.6in;
+}
+.reduce-top
+{
+    position: relative;
+    top: -.1in;
+}
+.top-margin
+{
+    margin-top: .2in;
+}
+.top-bottom-margin
+{
+    margin: .2in 0 .2in 0;
+}
+.mobile .top-margin
+{
+    margin-top: 6px;
+}
+.mobile .top-bottom-margin
+{
+    margin: 6px 0 6px 0;
+}
+.no-margin
+{
+    margin: 0;
+}
+.box
+{
+    border: 1px ridge #ccc;
+    padding: 3px;
+}
+.black-box
+{
+    border:2px ridge black;
+    padding:5px;
+}
+.light-gray-box
+{
+    border:2px ridge #BBB;
+    padding:5px;
+}
+.slight-pad
+{
+    padding: 0.1in;
+}
+.mobile .slight-pad
+{
+    padding: 3px;
+}
+.border-top
+{
+    border-top:2px solid black;
+    padding-top:5px;
+}
+.align-top
+{
+    vertical-align: top;
+}
+fieldset
+{
+    border-color:black;
+}
+/* set up prefixes for left-to-right, right-to-left and vertical text support*/
+.html-tb
+{
+    -ms-block-progression: tb;
+}
+.html-rl
+{
+    -ms-block-progression: rl;
+}
+.html-lr
+{
+    -ms-block-progression: lr;
+}
+.html-rtl
+{
+    direction: rtl;
+    text-align:right;
+}
+.html-ltr
+{
+    direction: ltr;
+    text-align: left;
+}
+body.html-rl-tb
+{
+}
+body.html-lr-tb
+{
+    writing-mode: horizontal-tb;
+}
+body.html-tb-rl
+{
+    writing-mode: vertical-rl;
+}
+body.html-tb-lr
+{
+    writing-mode: vertical-lr;
+}
+/* set up global font preferences */
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin:  0;
+    padding: 0;
+    width: auto;
+}
+/* .mobile is used for phone devices -- an attempt has been made to
+   make the default non-mobile version of the page work with tablets
+*/
+body.mobile
+{
+    left: 0;
+    margin: 0;
+    min-height: 0;
+    width: auto;
+}
+.body-container
+{
+    border: 0;
+    margin: 0;
+    min-width:9.5in; /* making width values larger will
+                affect help visibility */
+    max-width:11in;
+    padding: 0;
+}
+.mobile .body-container
+{
+    min-width:auto;
+    max-width:auto;
+}
+.html-ltr .body-container
+{
+    transition: margin-left .25s ease-in;
+}
+.html-rtl .body-container
+{
+    transition: margin-right .25s ease-in;
+}
+/* bar on which web, images, video subsearches and sign-in stuff live
+   for many of the below things we need to handle them different on the landing
+   page from pages where search results appear
+ */
+.top-container
+{
+    height: 65px;
+    left: 0px;
+    overflow: hidden;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+}
+.top-container.landing
+{
+    background-color:white;
+}
+.top-container .inner-bar,
+{
+    height: 60px;
+    margin:0;
+    overflow: hidden;
+}
+.top-container.landing .inner-bar
+{
+    background-color:white;
+}
+.mobile .top-container
+{
+    top: -5px;
+    min-width: 0;
+    z-index: 1;
+}
+.top-landing-spacer
+{
+    clear:both;
+    height:2in;
+}
+.mobile .top-landing-spacer
+{
+    clear:both;
+    height:70px;
+}
+
+/* this is for informational messages when settings are changed or admin stuff
+   done
+ */
+#message
+{
+    left: 2in;
+    position: fixed;
+    right: 2in;
+    text-align: center;
+    top: .1in;
+    width:auto;
+    z-index: 3;
+}
+.mobile #message
+{
+    left: 20px;
+    right: 20px;
+    width: 100%;
+}
+
+.display-message
+{
+    color:#D00;
+}
+/*
+   top nav bar and settings toggle
+ */
+.nav-bar
+{
+    min-width: 8in;
+    padding: 5px;
+}
+.landing .nav-bar
+{
+    min-width: unset;
+    width: 65px;
+}
+.nav-bar h1
+{
+    margin:0;
+    min-width:9in;
+    max-width:10in;
+    padding:0;
+    text-align: center;
+}
+.nav-bar h1 img
+{
+    position:relative;
+    top: 2px;
+}
+.nav-bar h1 > span
+{
+    display:inline-block;
+    height:30pt;
+    margin:2px;
+    overflow-y:scroll;
+    padding:0;
+    position:relative;
+    top:-10px;
+}
+.mobile .nav-bar h1 > span
+{
+    max-width:250px;
+}
+.nav-bar h1 > span > span
+{
+    position:relative;
+    top:5px;
+}
+.html-ltr .nav-bar h1 > span
+{
+    text-align:left;
+}
+.html-rtl .nav-bar h1 > span
+{
+    text-align:right;
+}
+.mobile .nav-bar
+{
+    min-width: unset;
+    width: 100%;
+}
+.mobile .nav-bar h1
+{
+    font-size:14pt;
+    min-width: unset;
+    max-width: unset;
+}
+.html-ltr .menu-options
+{
+    height: 100%;
+    left: -300px;
+    overflow-y:scroll;
+    position: fixed;
+    top: 0px;
+    transition: left .25s ease-in;
+    width: 300px;
+    z-index: 100;
+}
+.html-rtl .menu-options
+{
+    height: 100%;
+    overflow-y:scroll;
+    position: fixed;
+    right: -300px;
+    top: 0px;
+    transition: right .25s ease-in;
+    width: 300px;
+    z-index: 100;
+}
+#admin-menu-options
+{
+    display: none;
+}
+.menu-options h2
+{
+    margin: 3px;
+}
+.option-heading
+{
+    margin: 0 2px 0 2px;
+    padding: 0;
+}
+.menu-options ul
+{
+    font-size: 14pt;
+    margin-top:2px;
+}
+.mobile .menu-options ul
+{
+    font-size: 14pt;
+    margin-top:2px;
+}
+.menu-options li
+{
+    padding: 2px;
+}
+.mobile .menu-options li
+{
+    padding: 1px;
+}
+.menu-options select
+{
+    font-size: 14pt;
+}
+#menu-options-background {
+    background-color: black;
+    display: none;
+    min-height: 100%;
+    left: 0px;
+    opacity: 0.15;
+    position: fixed;
+    top: 0px;
+    transition: all 2s ease-in;
+    width: 100%;
+    z-index:50;
+}
+/* controls */
+.anchor-button,
+.anchor-button-consent,
+.vote-button
+{
+    background-color: #F0F0F0;
+    border: ridge 1px #DDD;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin: 2px;
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+}
+.vote-button
+{
+    background-color: #DDD;
+    border-radius: 5px;
+    color: #555;
+    margin: 1px;
+    min-width:.15in;
+    padding: 1px;
+}
+.anchor-button-consent
+{
+    background-color: #AAA;
+    border-radius: 5px;
+    color: #EEE;
+}
+.anchor-button:hover,
+.anchor-button-consent:hover,
+{
+    text-decoration: underline;
+}
+.anchor-button-consent:hover,
+.vote-button:hover
+{
+    background-color: #888;
+    color: #FFF;
+}
+.button-anchor
+{
+    background:inherit;
+    border: 0;
+    color: blue;
+    font-size: 16px;
+    padding: 0;
+    text-decoration:underline;
+}
+.action-anchor-button
+{
+    background:inherit;
+    font-size: 14pt;
+    display: inline-block;
+    padding: 2px;
+    position:relative;
+    text-decoration:none;
+}
+.action-anchor-button:hover
+{
+    background:lightgray;
+    border-radius:3px;
+}
+.button-container
+{
+    position:relative;
+}
+span[aria-label]:focus:after,
+span[aria-label]:hover:after {
+    background: #000;
+    border-radius: 3px;
+    content: attr(aria-label);
+    color: #fff;
+    display: block;
+    font-size: 12pt;
+    padding: 3px;
+    position: absolute;
+    top: -95%;
+    z-index: 100000;
+}
+/*
+  ComponentView styles
+ */
+.same-container,
+.opposite-container
+{
+    margin-left: 1%;
+    margin-right: 1%;
+    max-width: 20%;
+    min-width: 14%;
+    z-index: 1;
+}
+.html-ltr .same-container
+{
+    float: left;
+}
+.html-rtl .same-container
+{
+    float: right;
+}
+.html-ltr .opposite-container
+{
+    float: right;
+}
+.html-rtl .opposite-container
+{
+    float: left;
+}
+.sub-top-container
+{
+    margin: 0;
+    margin-top: 65px;
+}
+.center-container
+{
+    margin-left: 0.5in;
+    margin-right: 0.5in;
+    margin-top: 0px;
+    z-index:-1;
+}
+.mobile .center-container
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: unset;
+}
+.center-container.landing
+{
+    margin: auto;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+.cookie-consent {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+/*
+   Landing page (www.yioop.com) specific css
+ */
+.small-top
+{
+    position: relative;
+    top:-.8in;
+}
+.medium-top
+{
+    margin-left:0.3in;
+    margin-right:0.3in;
+    position: relative;
+    top:-.8in;
+}
+.square-list
+{
+    list-style-type: square;
+}
+.mobile .small-top
+{
+    position: relative;
+    top:0in;
+}
+/*
+   Style tweaks for blog, privacy, bot, settings, and admin pages
+ */
+.mobile .non-search
+{
+    left: 10px;
+    position: relative;
+    right: 10px;
+    top: 10px;
+}
+
+/*
+   Styles to control logo (image + adjacent text) on various pages
+ */
+.logo
+{
+    margin: 0 auto 0 auto;
+    left: 0.1in;
+    position: relative;
+    right: 0.1in;
+    top: -0.05in;
+}
+.mobile .non-search .logo
+{
+    margin: 0 auto 0 auto;
+    position: relative;
+    text-align: inherit;
+    top: 20px;
+}
+.mobile .test {
+    position: relative;
+    top: -0.18in;
+}
+.request-add
+{
+    font-size:12pt;
+    height:0;
+    position:relative;
+    top:-25px;
+}
+.group-request-add
+{
+    font-size:12pt;
+    height:0;
+}
+.mobile .request-add,
+.mobile .group-request-add
+{
+    position:relative;
+    top:-18px;
+}
+.admin-collapse
+{
+    height:0;
+    position:relative;
+    top:10px;
+}
+.feed-back-link
+{
+    font-size:12pt;
+}
+.group-feed-back-link
+{
+    font-size:12pt;
+    margin-left:1.75in;
+    margin-right:1.75in;
+}
+
+.group-wiki-title select,
+.group-feed-title select
+{
+    border-radius:6px;
+    font-size:16pt;
+    font-weight:bold;
+    padding:4px;
+}
+.admin-heading
+{
+    margin-left: .06in;
+    margin-right: .06in;
+}
+.group-heading
+{
+    margin: .1in auto .4in auto;
+    text-align:center;
+}
+.group-heading span
+{
+    position: relative;
+    top: -30px;
+}
+.group-heading span select
+{
+    border-radius:6px;
+    font-size:12pt;
+    font-weight:bold;
+    padding:4px;
+    position: relative;
+    top:-2px;
+}
+.mobile .admin-heading
+{
+    position: absolute;
+    top: 5px;
+    width:360px;
+}
+.mobile .group-heading
+{
+    position: absolute;
+    top: 5px;
+}
+.mobile .group-heading span
+{
+    position: relative;
+    top: 0px;
+}
+.landing .logo
+{
+    min-width: 6in;
+    position: relative;
+    text-align: center;
+    top: 0;
+}
+.mobile .landing .logo
+{
+    min-width: 0px;
+}
+.landing.non-search
+{
+    clear: both;
+    margin-top: 1.5in;
+}
+.logo img
+{
+    border: 0;
+    width:2in;
+}
+.group-heading img.logo
+{
+    width: 1.5in;
+}
+.group-comment
+{
+    margin: 10px 8px 10px 8px !important;
+}
+.mobile .group-comment
+{
+    margin: 10px 14px 10px 14px !important;
+}
+.mobile .logo img
+{
+    left: -8px;
+    position: relative;
+    top: 14px;
+    width: 50px;
+    z-index: 3;
+}
+.mobile .admin-heading img
+{
+    position: relative;
+    top: 0px;
+}
+.mobile .group-heading img.logo
+{
+    left: 4px;
+    position: relative;
+    top: 17px;
+    width: 50px;
+}
+.landing .logo img
+{
+    border: 0;
+    width: 3in;
+}
+.mobile .landing .logo img
+{
+    position: relative;
+    left: 0px;
+    top: 14px;
+    width: 200px;
+}
+
+.mobile .admin-heading img
+{
+    left: 80px;
+    position: relative;
+    right: 80px;
+    top: 30px;
+    width: 50px;
+}
+.logo span
+{
+    position: relative;
+    top: -.3in;
+}
+
+.mobile .logo span
+{
+    position: relative;
+    top: 0;
+}
+.html-ltr b.logo-subsearch
+{
+    font-size: 12pt;
+    left: 70px;
+    position: fixed;
+    top: 45px;
+    transition: left .25s ease-in;
+}
+.html-rtl b.logo-subsearch
+{
+    font-size: 12pt;
+    right: 70px;
+    position: fixed;
+    top: 45px;
+    right: left .25s ease-in;
+}
+.html-ltr.mobile b.logo-subsearch
+{
+    left: 50px;
+    position: fixed;
+    top: 40px;
+}
+.html-rtl.mobile b.logo-subsearch
+{
+    right: 50px;
+    position: fixed;
+    top: 40px;
+}
+.logo-subsearch
+{
+    font-size: 30pt;
+    position: relative;
+    text-align: center;
+    top: -50px;
+}
+.mobile .logo-subsearch
+{
+    font-size: 20pt;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    top: -25px;
+    z-index: 5;
+
+}
+.mobile .admin-heading
+{
+    left: 70px;
+    position: relative;
+    right: 70px;
+    top: 20px;
+}
+.mobile .non-search .logo span
+{
+    left: 20px;
+    position: relative;
+    right: 20px;
+    top: -.3in;
+    width: 200px;
+}
+.mobile .non-search .logo img
+{
+    left: 20px;
+    position: relative;
+    right: 20px;
+    top: -20px;
+    width: 50px;
+}
+/*
+   Styles for footers on various pages
+ */
+.footer-element
+{
+    clear:both;
+    margin:auto;
+    margin-top: 25px;
+    text-align:center;
+}
+.mobile .footer-element
+{
+    margin-top: 60px;
+}
+.signin-exit
+{
+    clear: both;
+    margin: 0.25in auto 0.25in auto;
+    width: 7in;
+    text-align: center;
+}
+.mobile .signin-exit
+{
+    min-width:0;
+}
+.mobile .signin-exit
+{
+    margin-top: 0.4in;
+    position: relative;
+    text-align: inherit;
+    min-width:0;
+    top: -20px;
+    width: 90%;
+}
+.html-ltr .signin-exit li
+{
+    text-align:left;
+    list-style-type: square;
+    margin-left:2.3in;
+}
+.html-rtl .signin-exit li
+{
+    text-align:right;
+    list-style-type: square;
+    margin-right:2.3in;
+}
+.mobile .signin-exit li
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+/*
+   If query information is available then web_layout will
+   render statistics about all the SQL and search engine
+   queries that were executed for a page. These styles
+   control how this diagnostic info renders
+ */
+.query-statistics
+{
+    border-top: 2px solid gray;
+    color: #606060;
+    margin-top: 0.4in;
+}
+.mobile .query-statistics
+{
+    position: relative;
+    overflow-wrap: break-word;
+    top: 200px;
+    word-wrap: break-word;
+}
+.query
+{
+    border: 1px solid gray;
+    margin: 0.1in;
+    padding: 0.05in;
+}
+/*
+   Styles for the login, settings, and register pages
+ */
+.html-ltr .cancel
+{
+    text-align: right;
+}
+.html-rtl .cancel
+{
+    text-align: left;
+}
+.login
+{
+    font-size: 16pt;
+    width: 5in;
+    margin: 0 auto 0 auto;
+}
+.settings .top
+{
+    font-size:14px;
+    margin:0;
+    padding:0;
+    position:relative;
+    top:5px;
+}
+.settings .bottom
+{
+    margin:0;
+    padding:0;
+    position:relative;
+    top:-10px;
+}
+.html-ltr .top-container .settings
+{
+    color: #555;
+    float: left;
+    font-size: 50px;
+    height: 62px;
+    position: relative;
+    text-align: center;
+    top: -5px;
+    width: 40px;
+    z-index: 1;
+}
+.html-rtl .top-container .settings
+{
+    color: #555;
+    float: right;
+    font-size: 50px;
+    height:62px;
+    position: relative;
+    text-align: center;
+    top: -5px;
+    width: 40px;
+    z-index:1;
+}
+.register
+{
+    font-size: 14pt;
+    width: 6in;
+    margin: auto;
+}
+.login input
+{
+    font-size: 16pt;
+    margin: 5px;
+}
+.register input
+{
+    font-size: 16pt;
+    margin: 5px;
+    width: 80%;
+}
+
+.mobile .login,
+.mobile .register,
+{
+    font-size: 14pt;
+    left: 5px;
+    position: relative;
+    right: 5px;
+    width: 100%;
+}
+.login button,
+.register button
+{
+    font-size:16pt;
+}
+.register select
+{
+    font-size: 10pt;
+    width:90%;
+}
+.mobile .login button,
+.mobile .register button
+{
+    font-size: 14pt;
+}
+.mobile .register select
+{
+    font-size: 12pt;
+}
+.user-icon-td
+{
+    vertical-align: top;
+    width: 1.4in;
+}
+.user-icon
+{
+    margin: auto;
+    width: 1.3in;
+}
+.mobile .user-icon-td
+{
+    width:90px;
+}
+.mobile .user-icon
+{
+    width:80px;
+}
+.upload-file
+{
+    background-color: #CCC;
+    border: 3pt #999 solid;
+    border-radius:13px;
+    height: .5in;
+    margin: .2in;
+    overflow-wrap: break-word;
+    padding: 2px;
+    width: 2in;
+    word-wrap: break-word;
+}
+.mobile .upload-file
+{
+    width: 150px;
+    height: 30px;
+}
+.full-width
+{
+    width: 100%;
+}
+.small-icon
+{
+    height: 0.5in;
+    position:relative;
+    top:10px;
+    width: 0.5in;
+}
+.mobile .small-icon
+{
+    height: 30px;
+    width: 30px;
+}
+.icon-upload
+{
+    left:16px;
+    padding-right:2px;
+    position:relative;
+    width: 1.6in;
+}
+.mobile .icon-upload
+{
+    left:-5px;
+    position:relative;
+    font-size:11pt;
+    width:86px;
+}
+/*
+   Styles for the statistics for a crawl page
+ */
+.stats  {
+    position: relative;
+    top: 0.1in;
+}
+.statistics
+{
+    left: .1in;
+    position: relative;
+    right: .1in;
+}
+.mobile .statistics
+{
+    font-size: 14pt;
+    left: 5px;
+    position: relative;
+    right: 5px;
+    width: 100%;
+}
+.mobile .stats span
+{
+    left: -10px;
+    position: relative;
+    top: -10px;
+    width: 200px;
+}
+.mobile .stats img
+{
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 50px;
+}
+/*
+  Styles for search and search result pages
+ */
+.search-results
+{
+    width:inherit;
+}
+.html-ltr .search-stats
+{
+    color: #666;
+    font-size: 14pt;
+    float:right;
+    padding: 5px;
+    z-index:-1;
+}
+.html-rtl .search-stats
+{
+    color: #666;
+    font-size: 14pt;
+    float: left;
+    padding: 5px;
+    z-index:-1;
+}
+.search-callout
+{
+    border: 3px solid #DDD;
+    padding: 5px;
+    margin-top: 65px;
+    width:2.5in;
+}
+.mobile .search-callout
+{
+    border: 3px solid #DDD;
+    padding: 5px;
+    margin: 8px 3px 3px 3px;
+    width:320px;
+}
+.news-result
+{
+    min-height:1.1in;
+}
+.news-result img
+{
+    height:85px;
+    margin-right:5px;
+    position:relative;
+    top:10px;
+    width:120px;
+}
+.mobile .news-result img
+{
+    max-height:65px;
+    top:7px;
+    width:100px;
+}
+.news-result,
+.result
+{
+    border: 1px solid transparent;
+    margin-bottom:12px;
+    margin-top:12px;
+    padding: 2px;
+    width:inherit;
+}
+.news-result:hover,
+.result:hover
+{
+    border: 1px solid gray;
+}
+.word-cloud-spacer
+{
+    margin-left:1em;
+    font-weight: bold;
+    color : gray;
+}
+.word-cloud-1
+{
+    font-size: 16pt;
+    color: #080;
+    text-decoration: none;
+}
+.word-cloud-2
+{
+    font-size: 15pt;
+    color: #090;
+    text-decoration: none;
+}
+.word-cloud-3
+{
+    font-size: 14pt;
+    color: #0A0;
+    text-decoration: none;
+}
+.word-cloud-4
+{
+    font-size: 13pt;
+    color: #0B0;
+    text-decoration: none;
+}
+.word-cloud-5
+{
+    font-size: 12pt;
+    color: #0C0;
+    text-decoration: none;
+}
+.word-cloud:hover
+{
+    text-decoration: underline;
+}
+.no-search-results
+{
+    color: #999;
+    font-size: 18pt;
+    padding-bottom:3%;
+    padding-top:5%;
+    text-align:center;
+}
+.continuous-result-separator
+{
+    line-height: 1;
+    position:relative;
+    top:-10px;
+    padding-right: 4px;
+}
+.html-ltr .continuous-result-separator
+{
+    float: left;
+}
+.html-rtl .continuous-result-separator
+{
+    float: right;
+}
+.access-result
+{
+    box-shadow: 0px 0px 3px 3px #ccc;
+    font-size: 12pt;
+    padding: 5px;
+    margin:10px;
+}
+#results-container
+{
+    padding-top: 20px;
+    max-height: 6in;
+    overflow-y: scroll;
+}
+.feed-heading
+{
+    margin:0 auto 0 auto;
+    padding: 0;
+    width: 7in;
+}
+.page-list-header-footer
+{
+    padding: 0;
+    margin: 0 auto 0 auto;
+    width: 7in;
+}
+.group-result
+{
+    border-radius:5px;
+    box-shadow: 0px 0px 3px 3px #ccc;
+    padding: 0.05in .1in .25in .1in;
+    margin: 8px auto 8px auto;
+}
+.small-group-result
+{
+    border-radius:5px;
+    box-shadow: 0px 0px 2px 2px #ccc;
+    padding: 0.02in .1in .02in .1in;
+    margin: 7px auto 7px auto;
+    min-height:.52in;
+}
+.button-group-result
+{
+    padding: .1in .1in .25in .1in;
+    margin:auto;
+}
+.button-group-result h2,
+.result h2,
+.news-result h2,
+.small-group-result h2,
+.group-result h2
+{
+    font-size: 14pt;
+    font-weight: normal;
+}
+div.button-group-result,
+div.small-group-result,
+div.group-result
+{
+    font-size: 12pt;
+    width:7in;
+}
+.mobile div.button-group-result,
+.mobile div.small-group-result,
+.mobile div.group-result
+{
+    margin: 8px auto 8px auto;
+    width: auto;
+}
+.spell
+{
+    color: #666;
+    display:none;
+    font-size: 14pt;
+    padding-bottom:10px;
+    padding-top:10px;
+    z-index: 2;
+}
+/*
+   The next styles are for the built-in search box that comes with
+   Yioop rather than the search boxes which can be inserted on wiki pages.
+ */
+.search-box
+{
+    border-color: #AAA;
+    border-radius: 0.07in;
+    border-style: solid;
+    border-width: 0.02in;
+    padding: 0.04in;
+    padding-bottom: 0.06in;
+    width: 7.075in;
+}
+.html-ltr .search-box
+{
+    padding-left:.125in;
+}
+.html-rtl .search-box
+{
+    padding-right:.125in;
+}
+.landing .search-box
+{
+    margin:auto;
+    min-width: 8.1in;
+    width: 8.1in;
+}
+.subsearch.search-box,
+.subsearch.footer-element,
+.subsearch.copyright
+{
+    position:relative;
+    top: -10px;
+}
+.mobile .search-box
+{
+    padding: 3px;
+    padding-bottom: 2px;
+    position: relative;
+    max-width: 450px;
+    min-width: 285px;
+    top: 25px;
+    width:90%;
+}
+.mobile .landing .search-box
+{
+    position: relative;
+    top: 10px;
+}
+.search-box p
+{
+    font-size: 16pt;
+}
+.search-box input
+{
+    appearance: none;
+    border: 0;
+    font-size: 16pt;
+    margin: 0;
+    padding: 0.05in;
+    -webkit-appearance:none;
+    width:6.4in;
+}
+.landing .search-box input
+{
+    width:7.4in;
+}
+
+.search-box button
+{
+    margin:0;
+    padding:0;
+    width:0.5in;
+}
+.search-box img
+{
+    left:-5px;
+    position:relative;
+    top:2px;
+}
+.mobile .search-box button
+{
+    padding:0;
+    width:50px;
+}
+.mobile .search-box input
+{
+    font-size: 14pt;
+    position: relative;
+    top: -3px;
+    max-width: 400px;
+    min-width: 234px;
+    width:80%;
+}
+.mobile .landing .search-box input
+{
+    font-size: 14pt;
+
+}
+.button-box img
+{
+    left:-1px;
+    position:relative;
+    top:3px;
+}
+.mobile .search-box .button-box
+{
+    background-color:#EEE;
+    border-radius:1px;
+    height: 35px;
+    left:-10px;
+    position:relative;
+    width:40px;
+}
+.mobile .button-box img
+{
+    left:-2px;
+    position:relative;
+    top:1px;
+}
+.search-field
+{
+    position: relative;
+    min-width:2.5in;
+    top: -25px;
+}
+.mobile .search-field
+{
+    position: relative;
+    width:85%;
+    top: -25px;
+}
+.search-field input[type="search"]
+{
+    appearance: none;
+    border: 0;
+    font-size: 16pt;
+    height: 37px;
+    margin: 0;
+    padding: 3px;
+    -webkit-appearance: none;
+    width:53%;
+}
+.mobile .search-field input[type="search"]
+{
+    border-radius:1px;
+    width:58%;
+}
+.mobile .search-field .button-box
+{
+    background-color:#EEE;
+    border-radius:1px;
+    height:37px;
+    left:0;
+    position: relative;
+    top: 3px;
+    width:40px;
+}
+.mobile .search-field .button-box img
+{
+    left:-10px;
+    position:relative;
+    top:1px;
+}
+.serp-links-score
+{
+    color: #666;
+}
+/*
+    The next styles are for the search boxes which can be inserted
+    into wiki pages
+ */
+.mobile .small-search-box
+{
+    position:static;
+    width:1.6in;
+}
+.mobile .medium-search-box
+{
+    position:static;
+    width:2.1in;
+}
+.mobile .large-search-box
+{
+    position:static;
+    width:2.6in;
+}
+.mobile .small-search-box .search-input
+{
+    position:static;
+    width:.95in;
+}
+.mobile .medium-search-box .search-input
+{
+    position:static;
+    width:1.45in;
+}
+.mobile .large-search-box .search-input
+{
+    position:static;
+    width:1.95in;
+}
+.small-search-box
+{
+    margin:4px;
+    position:static;
+    width:2.6in;
+}
+.small-search-box .search-input
+{
+    position:static;
+    width:1.95in;
+}
+.medium-search-box
+{
+    margin:4px;
+    position:static;
+    width:4.1in;
+}
+.medium-search-box .search-input
+{
+    position:static;
+    width:3.45in;
+}
+.large-search-box
+{
+    margin:4px;
+    position:static;
+    width:5.6in;
+}
+.large-search-box .search-input
+{
+    position:static;
+    width:4.95in;
+}
+.search-input
+{
+    font-size: 0.22in!important;
+    padding: 2px!important;
+    position: relative!important;
+    margin: 0!important;
+    top: -3px!important;
+}
+.search-button
+{
+    height:0.35in;
+    left:-4px;
+    margin: 0;
+    padding: 0;
+    position:relative;
+    right:-4px;
+}
+.mobile .search-button
+{
+    left:-4px;
+    position:relative;
+    right:-4px;
+    width:50px;
+}
+/*
+   Styles for the word suggest drop down on search pages
+ */
+.dropdown
+{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-style: solid;
+    border-color: #AAA;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: none;
+    border-width: 2px;
+    left: 177px;
+    margin: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 0;
+    position: fixed;
+    top: 50px;
+    width: 7.12in;
+    z-index:3;
+}
+.landing .dropdown
+{
+    left: -0.3in;
+    position: relative;
+    top:0;
+    width: 7.38in;
+}
+.mobile .dropdown
+{
+    display: none;
+}
+.suggest-list
+{
+    border: 0;
+    font-size: 16pt;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+    width: 6.55in;
+}
+.landing .suggest-list
+{
+    width: 7.4in;
+}
+.suggest-list li
+{
+    cursor: pointer;
+    font-size: 16pt;
+    list-style:none;
+    margin-left: 0;
+    margin-right: 0;
+    padding:0px;
+    padding-left:2px;
+    padding-right:2px;
+    width: 7.08in;
+}
+.landing .suggest-list li
+{
+    width: 7.8in;
+}
+.suggest-list li span
+{
+    color: black;
+    display: block;
+    height: 18pt;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    z-index: 5;
+}
+.mobile .suggest-list
+{
+    display: none;
+}
+/*
+   Styles for the bottom of search results links to additional
+   pages of search results
+ */
+.pagination
+{
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+.html-ltr .pagination ul,
+.html-ltr .pagination ul li
+{
+    display: inline;
+    font-size: 14pt;
+    padding-left: 0;
+    padding-right: 8px;
+}
+.html-rtl .pagination ul,
+.html-rtl .pagination ul li
+{
+    display:inline;
+    font-size: 14pt;
+    padding-left: 8px;
+    padding-right: 0;
+}
+.html-ltr .pagination ul li a.item
+{
+    border-color: blue;
+    border-style: solid;
+    border-width: 2px;
+    display: block;
+    float: left;
+    height: 25px;
+    margin-right: 8px;
+    padding-bottom: 0px;
+    padding-top: 1px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.html-rtl .pagination ul li a.item
+{
+    border-color: blue;
+    border-style: solid;
+    border-width: 2px;
+    display: block;
+    float: right;
+    height: 25px;
+    margin-left: 8px;
+    padding-bottom: 0px;
+    padding-top: 1px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.micro-pagination ul li a.item:hover,
+.pagination ul li a.item:hover
+{
+    background-color: #88F;
+    color: white;
+}
+.html-ltr .pagination ul li span.item
+{
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    display: block;
+    float: left;
+    height: 25px;
+    margin-right: 8px;
+    padding-top: 1px;
+    position: relative;
+    text-align: center;
+    top: -1px;
+    width: 25px;
+}
+.html-rtl .pagination ul li span.item
+{
+    border-color: black;
+    border-style: solid;
+    border-width: 5px;
+    display: block;
+    float: right;
+    height: 25px;
+    margin-left: 8px;
+    position: relative;
+    text-align: center;
+    top: -1px;
+    width: 25px;
+}
+.html-ltr .pagination ul li span.end
+{
+    display:block;
+    float:left;
+    margin-right: 8px;
+    padding-top: 1px;
+}
+.html-rtl .pagination ul li span.end
+{
+    display: block;
+    float: right;
+    margin-left: 8px;
+}
+.micro-pagination
+{
+    display:inline;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+.micro-pagination ul,
+.micro-pagination ul li
+{
+    display: inline;
+    font-size: 8pt;
+    margin:0;
+    padding:0;
+    position:relative;
+    top:-1px;
+}
+.micro-pagination ul li a.item
+{
+    border-color: gray;
+    border-style: solid;
+    border-width: 2px;
+    padding: 2px;
+    margin: 2px;
+    height: 12px;
+    text-align: center;
+    text-decoration: none;
+    width: 12px;
+}
+/*
+   Styles for video subsearch page
+ */
+.html-ltr .video-link
+{
+    float: left;
+    margin: 0;
+    height: 90px;
+    padding-top: 0.05in;
+    width: 128px;
+}
+.video-link .thumb
+{
+    height: 80px;
+    width: 120px;
+}
+.html-ltr .video-play
+{
+    height: 30px;
+    left: 40px;
+    position: relative;
+    top: -60px;
+    width: 40px;
+}
+.html-rtl .video-link
+{
+    float: right;
+    height: 90px;
+    margin:0;
+    padding-top: 0.05in;
+    width: 128px;
+}
+.html-rtl .video-play
+{
+    height: 30px;
+    position: relative;
+    right: 40px;
+    top: -60px;
+    width: 40px;
+}
+/*
+   Styles for image subsearch page
+ */
+.image-list
+{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+}
+.image-list img
+{
+    width:1in;
+    height:1in;
+    padding: 5px;
+}
+.mobile .image-list
+{
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 2px;
+    position: relative;
+    top: 5px;
+}
+.mobile .image-list img
+{
+    height: 50px;
+    width: 50px;
+    padding:2px;
+}
+/*
+   Styles for tables on login and admin pages
+ */
+.mobile .table-input select
+{
+    width: 190px;
+}
+.mobile .table-input input
+{
+    width: 150px;
+}
+.html-ltr .table-label
+{
+    text-align: right;
+}
+.html-ltr .table-input
+{
+    text-align: left;
+}
+.html-rtl .table-label
+{
+    text-align: left;
+}
+.html-rtl .table-input
+{
+    text-align: right;
+}
+/*
+    Styles for different admin page elements
+ */
+.content
+{
+    background-color: white;
+    font-size: 12pt;
+    margin-left: 0.5in;
+    margin-right: 0.5in;
+    min-height: 3in;
+    padding: 8px;
+    position: relative;
+    width: 8in;
+}
+.mobile .content
+{
+    clear: both;
+    position: relative;
+    left: 0;
+    margin: 3px;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+.content p,
+.content div
+{
+    padding-bottom: 8px;
+}
+.round-button-box
+{
+    border-radius:5px;
+    font-size:14pt;
+    text-align: center;
+    text-decoration: none;
+}
+.html-ltr .button-box
+{
+    color: black;
+    font-size: 16pt;
+    height:.4in;
+    left: -0.05in;
+    margin-left: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 0.015in;
+}
+
+.html-rtl .button-box
+{
+    color: black;
+    font-size: 16pt;
+    height:.4in;
+    margin-right: 0;
+    position: relative;
+    right: -0.05in;
+    text-align: center;
+    text-decoration: none;
+    top: 0.015in;
+}
+.mobile .button-box
+{
+    font-size: 12pt;
+    height:30px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1px;
+}
+.tiny-button-box
+{
+    font-size: 12pt;
+    margin:1px;
+    padding:1px;
+}
+.html-ltr .component-container
+{
+    float: left;
+    width: 2.6in;
+}
+.html-rtl .component-container
+{
+    float: right;
+    width: 2.6in;
+}
+.presentation-activity
+{
+    clear:both;
+}
+.current-activity
+{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16pt;
+    margin: auto;
+    margin-bottom: 65px;
+    min-height: 6.5in;
+    min-width: 8in;
+    padding-bottom: 0.1in;
+    padding-left: 0.1in;
+    padding-right: 0.1in;
+    position:relative;
+    top: 15px;
+}
+.current-activity-header
+{
+    margin: auto;
+    min-width: 9in;
+    position:relative;
+    top: 0.15in;
+}
+.mobile .current-activity-header
+{
+    min-width: 320px;
+    width:100%;
+}
+.mobile .wiki
+{
+    position:relative;
+    top: -35px;
+}
+.current-activity-footer
+{
+    min-width: 9in;
+    position: relative;
+    top:0.3in;
+}
+.mobile .current-activity-footer
+{
+    min-width: 320px;
+    width:100%;
+}
+.small-margin-current-activity
+{
+    font-size: 16pt;
+    margin: auto;
+    max-width: 9in;
+    min-height: 6.5in;
+    min-width: 9in;
+    padding-left: 0.1in;
+    padding-right: 0.1in;
+    padding-bottom: 0.1in;
+    position: relative;
+    top: 15px;
+}
+.mobile #feedstatus
+{
+    position: relative;
+    top: 55px;
+}
+.static
+{
+    position:relative;
+    top: 0px;
+}
+.mobile .current-activity,
+.mobile .small-margin-current-activity
+{
+    clear:both;
+    font-size:12pt;
+    margin:auto;
+    min-height: 200px;
+    min-width: 0;
+    padding: 0 3px 3px 3px;
+    position: relative;
+    top: 5px;
+    width: 96%;
+}
+
+.mobile textarea
+{
+    font-size:14pt;
+}
+
+.current-activity h2,
+.small-margin-current-activity h2
+{
+    margin-top: 0.05in;
+    padding-top: 0.05in;
+}
+.current-activity input,
+.small-margin-current-activity input
+{
+    font-size: 16pt;
+    position: relative;
+    top: 2px;
+}
+.current-activity object,
+.small-margin-current-activity object
+{
+    height: 2in;
+    min-width: 6in;
+    width: 8in;
+}
+.current-activity select,
+.small-margin-current-activity select
+{
+    font-size: 16pt;
+}
+.mobile .current-activity select,
+.mobile .small-margin-current-activity select
+{
+    font-size: 12pt;
+}
+
+.current-activity pre,
+.small-margin-current-activity pre
+{
+    font-size: 10pt;
+}
+.mobile .current-activity img,
+.mobile .small-margin-current-activity img
+{
+    max-width:95%;
+}
+
+.media-container .photo,
+.media-container .video
+{
+    border: solid black 0.02in;
+    image-orientation: from-image;
+    margin: 0.09in;
+    max-height: 90%;
+    max-width: 90%;
+    padding: 0.09in;
+}
+.mobile .media-container .photo
+{
+    max-width: 300px;
+}
+.photo-container,
+.video-container
+{
+    border: solid black 0.02in;
+    height: 7in;
+    margin: 0.09in;
+    max-height: 90%;
+    max-width: 90%;
+    padding: 0.09in;
+    position: relative;
+}
+.mobile .media-container .photo-container
+{
+    height: 460px;
+    max-width: 300px;
+}
+.photo-container .photo-360
+{
+    height: 25%;
+    image-orientation: from-image;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 25%;
+    z-index: 2;
+}
+.photo-container .canvas-360
+{
+    background-color: gray;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.media-container .audio
+{
+    padding:0.2in;
+    width:70%;
+}
+.table-margin
+{
+    font-size:14pt;
+}
+.table-center
+{
+    margin:auto;
+}
+.tiny-field
+{
+    font-size:12pt;
+    height: 13pt;
+    width: .6in;
+}
+.stat-table,
+.stat-table th,
+.stat-table td
+{
+    border: 1px solid black;
+    font-size:13pt;
+    padding: 1px;
+}
+.table-margin
+{
+    position: relative;
+    top: 0.10in;
+}
+.table-margin img
+{
+    position: relative;
+    top: 0.05in;
+}
+.admin-table
+{
+    border:0;
+    border-collapse: collapse;
+    font-size: 12pt;
+    min-width: 80%;
+}
+.classifiers-table
+{
+    border:0;
+    border-collapse: collapse;
+}
+.classifiers-table td,
+.classifiers-table th,
+.admin-table td,
+.admin-table th
+{
+    border: 1px ridge black;
+    padding: 3px;
+    word-wrap: break-word;
+}
+.admin-table select,
+.admin-table option
+{
+    font-size:13pt;
+    padding:0;
+    margin:0;
+}
+.admin-add-link
+{
+    text-decoration: none;
+}
+.admin-form-row
+{
+    border: 1px ridge black;
+    padding: 3px;
+}
+td.admin-edit-row
+{
+    border-bottom: 3px solid black;
+}
+td.admin-edit-box
+{
+    border: 3px solid black;
+}
+td.admin-edit-row-field
+{
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-top: 3px solid black;
+}
+td.admin-edit-form
+{
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-top: 0;
+}
+#browse-state,
+#browse-state option
+{
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 3px;
+    -webkit-appearance: menulist-button;
+}
+.mobile #browse-state,
+.mobile #browse-state option
+{
+    font-size: 14pt;
+}
+.name-table,
+.name-table th,
+.name-table td
+{
+    border:0;
+    border-collapse: collapse;
+    padding: 5px;
+}
+.role-activity-table
+{
+    border:0;
+    border-collapse: collapse;
+    margin:3px;
+}
+.role-activity-table td,
+.role-activity-table th
+{
+    border: 1px ridge black;
+    padding: 3px;
+    word-wrap: break-word;
+}
+th.no-border,
+td.no-border
+{
+    border:0;
+    border-collapse: collapse;
+    font-size: 13pt;
+    padding:0;
+}
+.tab-menu-list
+{
+    border-bottom: 2px solid black;
+    margin-bottom: 0px;
+    padding: 0px;
+    z-index: 1;
+}
+.tab-menu-list li
+{
+    display: inline;
+    list-style-type: none;
+}
+.tab-menu-list a
+{
+    background-color:#EEE;
+    border: 1px solid black;
+    border-bottom: 0px;
+    margin: 0;
+    overflow: hidden;
+    padding: 5px 5px 0px 5px;
+    text-decoration: none;
+}
+.tab-menu-list a.active
+{
+    background-color: white;
+    border-bottom: 3px solid white;
+}
+.tab-menu-content
+{
+    border: 1px solid black;
+    border-top: none;
+    padding: 10px;
+    z-index: 2;
+}
+
+.file-types-table,
+.file-types-table td,
+.search-page-table,
+.search-page-table td
+{
+    border: 1px ridge black;
+    border-collapse: collapse;
+    padding: 2px;
+}
+.search-sources-table td,
+.search-sources-table th
+{
+    padding: 1px;
+}
+.search-sources-table pre
+{
+    margin: 2px;
+    max-width: 5in;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+}
+.mobile .search-sources-table pre
+{
+    max-width: 230px;
+}
+td.instruct
+{
+    max-width: 5in;
+}
+.source-test
+{
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+.source-test textarea
+{
+    width:95%;
+    height:5in;
+    color:black;
+}
+.scrapers-table
+{
+    max-width: 6.5in;
+}
+.scrapers-table td,
+.scrapers-table th
+{
+    max-width:5in;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mobile .scrapers-table
+{
+    max-width: 340px;
+}
+.mobile .scrapers-table td,
+.mobile .scrapers-table th
+{
+    font-size: 11px;
+    max-width:250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.html-ltr .file-types-table,
+.html-ltr .file-types-all td,
+.html-ltr .search-page-table,
+.html-ltr .search-page-all td
+{
+   margin-left: 0.3in;
+   vertical-align: top;
+}
+.html-rtl .file-types-table,
+.html-rtl .file-types-all td,
+.html-rtl .search-page-table,
+.html-rtl .search-page-all td
+{
+   margin-right: 0.3in;
+   vertical-align: top;
+}
+.mobile .file-types-table,
+.mobile .file-types-all td,
+.mobile .search-page-table,
+.mobile .search-page-all td
+{
+   margin-left: 2px;
+   margin-right: 2px;
+   vertical-align: top;
+}
+.html-ltr .weights-table th
+{
+    text-align: right;
+}
+.html-rtl .weights-table th
+{
+    text-align: left;
+}
+.machine-table,
+.machine-table td,
+.machine-table th
+{
+    border: 1px ridge black;
+    margin: 1px;
+    padding: 3px;
+}
+.machine-table-hr,
+.machine-table-hr td
+{
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.toggle-table,
+.toggle-table td
+{
+    border: 1px ridge black;
+}
+.file-types-table td,
+.translate-table,
+.translate-table td,
+.translate-table th
+{
+    border: 1px ridge black;
+}
+.classifiers-table td.check
+{
+    padding: 0;
+    text-align: center;
+}
+.classifiers-table,
+.indexing-plugin-table
+{
+    border-collapse: collapse;
+    margin-top:3px;
+    margin-left: 0.3in;
+    margin-right: 0.3in;
+    padding: 3px;
+}
+.indexing-plugin-table,
+.indexing-plugin-table td,
+.indexing-plugin-table th
+{
+    border: 1px ridge black;
+    text-align: center;
+}
+.indexing-plugin-table th
+{
+    padding: 0.04in;
+}
+.html-ltr .indexing-plugin-table td.check
+{
+    padding: 0.1in;
+    text-align: left;
+}
+.html-rtl .indexing-plugin-table td.check
+{
+    padding: 0.1in;
+    text-align: left;
+}
+.indexing-plugin-lightbox
+{
+    background-color:gray;
+    display: none;
+    height:100%;
+    left: 0;
+    right:0;
+    opacity:0.95;
+    position:fixed;
+    top: 0;
+    width:100%;
+    z-index:100;
+}
+.mobile .indexing-plugin-lightbox
+{
+    left: 0px;
+    right: 0px;
+}
+.mobile .light-content h2
+{
+    font-size:12pt;
+    padding:20px;
+}
+.light-content
+{
+    height: 60%;
+    left:15%;
+    margin:auto;
+    overflow: auto;
+    padding: 16px;
+    position: fixed;
+    right:15%;
+    top:15%;
+    width: 60%;
+    z-index:101;
+}
+.mobile .light-content
+{
+    border: 5px solid #8A4;
+    left:10px;
+    padding: 15px;
+    right:10px;
+    width:260px;
+}
+.restrict-sites-by-url
+{
+    height:0.25in;
+    width: 0.25in;
+}
+.overlay
+{
+    margin:100px auto;
+}
+/** Feed styles*/
+.feed-user-link
+{
+    position:relative;
+    top:-6px;
+}
+.feed-user-icon
+{
+    padding-top: 0.15in;
+    width: 70px;
+}
+.small-feed-user-icon
+{
+    padding-top: 0.1in;
+    width: 25px;
+}
+.html-ltr .feed-item-body
+{
+    margin-left:.8in;
+    overflow: scroll;
+    padding-top: .1in;
+}
+.html-ltr .small-feed-item-body
+{
+    margin: 0 0.3in 0 0;
+    overflow: scroll;
+    padding: 0.1in;
+
+}
+.html-rtl .feed-item-body,
+.html-rtl .small-feed-item-body
+{
+    margin-right:.8in;
+    overflow: scroll;
+    padding-top: .1in;
+}
+.feed-item-body
+{
+    min-height:.7in;
+}
+.feed-item-body img,
+.feed-item-body video
+{
+    max-width:100%;
+}
+.feed-item-body pre
+{
+    white-space: pre-wrap;
+}
+.wiki-resources
+{
+    border: 1px solid gray;
+    height: 6in;
+    overflow: scroll;
+}
+.wiki-resources table
+{
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.wiki-resources thead
+{
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index:2;
+}
+.wiki-resources th
+{
+    border-bottom: 1px solid gray;
+}
+.wiki-resource-image
+{
+    max-width:100%;
+}
+.ebook,
+.wiki-resource-object
+{
+    border: 1px solid black;
+    height:100%;
+    margin:1%;
+    min-height:6in;
+    padding:0.5%;
+    width:99%;
+}
+.ebook-range
+{
+    width:70%;
+}
+.mobile .ebook-range
+{
+    width:165px;
+}
+.mobile .ebook,
+.mobile .wiki-resource-object
+{
+    min-height:300px;
+    width:344px;
+}
+.wiki-history-discuss
+{
+    position:relative;
+    top:25px;
+}
+.dropdown-container
+{
+    display:inline-block;
+    padding:0;
+    margin: 0;
+}
+ul.link-dropdown
+{
+    position:relative;
+    top:4px;
+    display:inline-block;
+    font-family: Arial, Verdana;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+ul.link-dropdown li
+{
+    background: #FCFCFC;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 2px 5px 2px 5px;
+    position: relative;
+    white-space: nowrap;
+}
+ul.link-dropdown li ul
+{
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+ul.link-dropdown > li,
+ul.link-dropdown ul li
+{
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+}
+ul.link-dropdown > li,
+ul.link-dropdown ul li:first-child
+{
+    border-top: 1px solid #999;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+ul.link-dropdown > li,
+ul.link-dropdown ul li:last-child
+{
+    border-bottom: 1px solid #999;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.dropdown-selector
+{
+    background: #FCFCFC;
+    border: 0;
+    font-size: unset;
+    font-weight: bold;
+    position: unset;
+    top: unset;
+    width: unset;
+}
+.dropdown-selector:hover
+{
+    background: #FCFCFC;
+    border: 0;
+    text-decoration: underline;
+}
+ul.link-dropdown li a
+{
+    text-decoration: none;
+    color: #000;
+}
+ul.link-dropdown > li:focus
+{
+    padding:0;
+}
+ul.link-dropdown li:focus a.opt-group
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+ul.link-dropdown:focus-within li li
+{
+    float: none;
+    z-index:1000;
+}
+ul.link-dropdown:focus-within li:hover,
+ul.link-dropdown:focus-within li a:hover
+{
+    background: #EEE;
+}
+ul.link-dropdown:focus-within li a:hover
+{
+    text-decoration: underline;
+    z-index:1001;
+}
+ul.link-dropdown:focus-within li ul
+{
+    position:absolute;
+    display: block;
+}
+.mobile .link-dropdown
+{
+    max-width: 240px;
+}
+
+.mobile .wiki-history-discuss
+{
+    position:relative;
+    top:20px;
+}
+.upload-gray-box
+{
+    background-color: floralwhite;
+    border:1px solid black;
+    border-radius: 5px;
+    font-size:10pt;
+    width:100%;
+}
+.mobile .upload-gray-box
+{
+    width:88%;
+}
+.media-upload-box
+{
+    background-color: #CCC;
+    border:1px solid black;
+    border-radius: 5px;
+    font-size:10pt;
+    margin-bottom: 4px;
+    min-height:0.35in;
+    width:100%;
+}
+.mobile .media-upload-box
+{
+    width: 88%;
+}
+/* Captcha settings styles */
+.captcha {
+    padding: 5px;
+    width: 2.1in;
+}
+/**
+ * Styles for wiki pages
+ */
+table.wikitable
+{
+    background:white;
+    border:1px #AAA solid;
+    border-collapse: collapse;
+    margin:1em 0;
+}
+table.wikitable > tr > th,
+table.wikitable > tr > td,
+table.wikitable > * > tr > th,
+table.wikitable > * > tr > td
+{
+    border:1px #AAA solid;
+    padding:0.2em;
+}
+table.wikitable > tr > th,
+table.wikitable > * > tr > th
+{
+    text-align:center;
+    background:white;
+    font-weight:bold
+}
+table.wikitable > caption
+{
+    font-weight:bold;
+}
+.rel-type-current
+{
+    border:2px solid black;
+    border-radius:8px;
+    text-align:center;
+    background:white;
+    padding:4px;
+}
+.rel-type-bottom
+{
+    border-bottom:thick double black;
+}
+.rel-type-top
+{
+    border-top:thick double black;
+}
+.rel-type-td
+{
+    width:10px;
+}
+.rel-type-hr
+{
+    border:1px solid black;
+}
+.resource-actions
+{
+    min-width:2in;
+}
+.mobile .resource-actions
+{
+    min-width:100px;
+}
+.resource-list td
+{
+    padding:3px;
+    vertical-align:middle;
+}
+.resource-list img
+{
+    height: 0.6in;
+    width:auto;
+}
+.mobile .resource-list input
+{
+    width:150px;
+}
+/*
+  Styles for the classifiers settings pages
+ */
+#update-accuracy.disabled
+{
+    color: #555;
+}
+#label-docs-form th,
+#label-docs-queue .actions
+{
+    font-weight:normal;
+    padding:0.1in 0.2in 0.1in 0in;
+    width:1.0in;
+}
+#label-docs-queue .actions
+{
+    padding: 0.1in;
+}
+#label-docs-queue
+{
+    font-size: 11pt;
+}
+#label-docs-queue td
+{
+    vertical-align: top;
+    padding-top: 10px;
+}
+#label-docs-queue .labelled td
+{
+    background-color: #f0f0f0;
+}
+#label-docs-queue .notinclass td
+{
+    background-color: #FFE0E0;
+}
+#label-docs-queue .inclass td
+{
+    background-color: #F0FFF0;
+}
+#label-docs-queue tr.inclass a.inclass,
+#label-docs-queue tr.notinclass a.notinclass,
+#label-docs-queue tr.skip a.skip
+{
+    color: black;
+    cursor: default;
+    font-weight: bold;
+    text-decoration: none;
+}
+#label-docs-queue p
+{
+    width: auto;
+    margin: 3px 0px;
+}
+#label-docs-queue .info
+{
+    padding-left: 7px;
+}
+#label-docs-queue .description
+{
+    color: #666;
+}
+#label-docs-queue .description b
+{
+    color: black;
+}
+#transfer
+{
+    background-color: black;
+    color: white;
+    height: 100%;
+    left: 0px;
+    opacity: 0.7;
+    position: fixed;
+    text-align:center;
+    top: 0px;
+    vertical-align: middle;
+    visibility: hidden;
+    width: 100%;
+    z-index: 200;
+}
+#help
+{
+    margin-top:15px;
+}
+.html-ltr #small-margin-help
+{
+    border-radius: 8px;
+    float: left;
+    left: 11.1in;
+    position: absolute;
+    top: 30px;
+    width: 4.0in;
+}
+.html-rtl #small-margin-help
+{
+    border-radius: 8px;
+    float: left;
+    position: absolute;
+    right: 9.5in;
+    top: 30px;
+    width: 4.0in;
+}
+#mobile-help
+{
+    clear:both;
+    float:none;
+    margin: 1.5%;
+    position: absolute;
+    top: 58px;
+    width: 360px;
+}
+.help-pane
+{
+    display : none;
+    width: 100%;
+    border: 2px solid #06f;
+}
+.small-margin-help-pane
+{
+    display: none;
+    width: 380px;
+    border: 2px solid #06f;
+    left: -1in;
+    top: 1in;
+}
+.help-title
+{
+    background: #06f;
+    color:white;
+    font-size: 16pt;
+    margin: 0;
+    padding: .05in;
+}
+.help-pane p
+{
+    color:#333;
+    padding:10px;
+}
+.help-pane pre
+{
+    overflow:scroll;
+}
+.help-button
+{
+    bottom: 50px;
+    cursor: pointer;
+    border: 1px solid #2d2bdb;
+    font-size: 20px;
+    line-height: 0.5px;
+    padding: 10px 3px;
+}
+button.default
+{
+    background: #d3d3d3;
+    color: black;
+}
+.close
+{
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 0.5px;
+    padding: 5px 0px 4px 4px;
+}
+#help-close {
+    color: white;
+}
+.sidebar
+{
+    top : 180px;
+}
+.new-thread-icon
+{
+    margin-bottom : -5px;
+}
+
+.top-adscript
+{
+    padding: 0.05in;
+    max-width:8in;
+}
+.top-ad-static,
+.group-ad-static
+{
+    position: relative;
+    top:15px;
+}
+.mobile .top-adscript
+{
+    padding: 1px;
+    width:90%;
+}
+.mobile .top-ad-static
+{
+    position: relative;
+    top: 0px;
+}
+.mobile .group-ad-static
+{
+    position: relative;
+    top: 100px;
+}
+.mobile .top-adscript iframe
+{
+    -ms-zoom: 0.63;
+    -o-transform: scale(0.63);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.63);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.63);
+    transform-origin: 0 0;
+}
+
+.html-ltr .side-adscript
+{
+    float: right;
+    height:0;
+    position:relative;
+    top: 28px;
+}
+
+.html-rtl .side-adscript
+{
+    float: left;
+    height: 0;
+    position:relative;
+    top: 0px;
+}
+
+.display-ad
+{
+    margin-left:3px;
+    margin-right:3px;
+    margin-top:80px;
+}
+.display-ad p
+{
+    width : 770px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.ad-preview img,
+.display-ad img
+{
+    height:41px;
+    width:50px;
+    float:left;
+}
+.display-ad img
+{
+    margin-left: 20px;
+}
+.ad-preview span,
+.display-ad span
+{
+    display: block;
+}
+.mobile .display-ad p
+{
+    max-width: 92%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: inherit;
+    width : auto;
+}
+.html-ltr .ad-preview
+{
+    left: 4.5in;
+    min-width: 3.5in;
+    position: relative;
+    top: -4.1in;
+}
+.html-rtl .ad-preview
+{
+    right: 4.5in;
+    min-width: 3.5in;
+    position: relative;
+    top: -4.1in;
+}
+
+p.start-ad
+{
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 0.5in;
+    width: 3in;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+.trending-container
+{
+    display:flex;
+    overflow-x: scroll;
+    max-width:9.5in;
+}
+.mobile .trending-container
+{
+    display:block;
+    overflow-x: scroll;
+    max-width:320px;
+}
+.serp .trending
+{
+    text-align:center;
+}
+.mobile .trending
+{
+    position:static;
+    margin-top:25px;
+}
+h2.trending
+{
+    margin-top: 5px;
+}
+h2.trending select,
+h2.trending option
+{
+    font-size:16pt;
+    font-weight:bold;
+}
+.trending-float
+{
+    float: left;
+    padding:6px;
+}
+
+.mobile .trending-float
+{
+    float: none;
+    position:static;
+}
+.trending-table
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 2.5in;
+}
+.mobile .trending-table
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 280px;
+}
+.trending-tr
+{
+    border: 1px solid black;
+}
+.trending-th,
+.trending-td
+{
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    width: 70%;
+    word-wrap: break-word;
+}
+.trend-score
+{
+    width: 30%;
+}
+.trending-td a
+{
+    text-decoration: none;
+}
+.trending-td a:hover
+{
+    text-decoration: underline;
+}
+.trending-footer
+{
+    padding: 0.1in;
+    text-align:center;
+}
+.mobile .trending-footer
+{
+    margin-bottom: 80px;
+}
+.trending-highlight
+{
+    margin:auto;
+    margin-top: 10px;
+    left:30px;
+    position: relative;
+    right:30px;
+    width:5.75in;
+}
+.mobile .trending-highlight
+{
+    left:10px;
+    right:10px;
+    width:330px;
+}
+.trending-highlight ul,
+{
+    display:inline;
+}
+.trending-highlight li
+{
+    display:inline;
+}
+.trending-highlight li a
+{
+    white-space:nowrap;
+}
+.feed-highlight li:before,
+.trending-highlight li:before {
+    content: '-';
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.trending-highlight li:last-child:after
+{
+    content: '-';
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.feed-highlight
+{
+    margin:auto;
+    margin-top: 10px;
+    left:30px;
+    overflow:hidden;
+    position: relative;
+    right:30px;
+    width:5.75in;
+}
+.mobile .feed-highlight
+{
+    left:10px;
+    right:10px;
+    width:330px;
+}
+.feed-highlight li
+{
+    list-style-type: none;
+    margin-top:10px;
+}
