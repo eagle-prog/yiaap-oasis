@@ -4,7 +4,6 @@
 # Work Directory
 work_directory/*
 !work_directory/app
-!work_directory/data
 !work_directory/_placeholder.php
 !work_directory/Profile.php
 !work_directory/crawl.ini
