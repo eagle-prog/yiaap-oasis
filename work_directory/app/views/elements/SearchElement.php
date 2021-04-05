@@ -111,53 +111,55 @@ class SearchElement extends Element implements CrawlConstants
         $token_string_amp = ($logged_in) ?
             C\CSRF_TOKEN . "=" . $data[C\CSRF_TOKEN]."&amp;" : "";
         $is_search_view = (get_class($this->view) == C\NS_VIEWS .
-            "SearchView");?>
-
-        <div class='top-landing-spacer h-50'></div>
-        <?php
-        $subsearch = "";
-        if (!empty($data['SUBSEARCH'])) {
-            $key = array_search($data['SUBSEARCH'],
-                array_column($data["SUBSEARCHES"], 'FOLDER_NAME'));
-            if(!empty($key)) {
-                e(" <div class='logo-subsearch'>" .
-                    $data["SUBSEARCHES"][$key]['SUBSEARCH_NAME'] .
-                    "</div>");
-                $subsearch = "subsearch";
+            "SearchView");
+        
+        if ($this->view->layout == "web") { ?>
+            <div class='top-landing-spacer h-50'></div>
+            <?php
+            $subsearch = "";
+            if (!empty($data['SUBSEARCH'])) {
+                $key = array_search($data['SUBSEARCH'],
+                    array_column($data["SUBSEARCHES"], 'FOLDER_NAME'));
+                if(!empty($key)) {
+                    e(" <div class='logo-subsearch'>" .
+                        $data["SUBSEARCHES"][$key]['SUBSEARCH_NAME'] .
+                        "</div>");
+                    $subsearch = "subsearch";
+                }
+            } ?>
+            <div class="<?=$subsearch ?> search-box">
+            <form id="search-form" method="get" action="<?=C\SHORT_BASE_URL ?>"
+                onsubmit="processSubmit()">
+            <p style="padding: 0.04in;"><?php
+            if (isset($data["SUBSEARCH"]) && $data["SUBSEARCH"] != "") {
+                ?><input type="hidden" name="s" value="<?=
+                $data['SUBSEARCH'] ?>" /><?php
             }
-        } ?>
-        <div class="<?=$subsearch ?> search-box">
-        <form id="search-form" method="get" action="<?=C\SHORT_BASE_URL ?>"
-            onsubmit="processSubmit()">
-        <p style="padding: 0.04in;"><?php
-        if (isset($data["SUBSEARCH"]) && $data["SUBSEARCH"] != "") {
-            ?><input type="hidden" name="s" value="<?=
-            $data['SUBSEARCH'] ?>" /><?php
+            if ($logged_in) { ?>
+                <input id="csrf-token" type="hidden" name="<?= C\CSRF_TOKEN ?>"
+                    value="<?= $data[C\CSRF_TOKEN] ?>" /><?php
+            } ?>
+            <input id="its-value" type="hidden" name="its" value="<?=
+                $data['its'] ?>" />
+            <input type="search" <?php if (C\WORD_SUGGEST) { ?>
+                autocomplete="off"  onkeyup="onTypeTerm(event, this)"
+                <?php } ?>
+                title="<?= tl('search_element_input_label') ?>"
+                id="query-field" name="q" value="<?php
+                if (isset($data['QUERY']) && !isset($data['NO_QUERY'])) {
+                    e(urldecode($data['QUERY']));} ?>"
+                placeholder="<?= tl('search_element_input_placeholder') ?>"/>
+            </p>
+            <button class="button-box" type="submit"><img
+                src='<?=C\SHORT_BASE_URL ?>resources/search-button.png'
+                alt='<?= tl('search_element_search') ?>'/></button>
+            </form>
+            </div>
+            <div id="suggest-dropdown">
+                <ul id="suggest-results" class="suggest-list">
+                </ul>
+            </div> <?php
         }
-        if ($logged_in) { ?>
-            <input id="csrf-token" type="hidden" name="<?= C\CSRF_TOKEN ?>"
-                value="<?= $data[C\CSRF_TOKEN] ?>" /><?php
-        } ?>
-        <input id="its-value" type="hidden" name="its" value="<?=
-            $data['its'] ?>" />
-        <input type="search" <?php if (C\WORD_SUGGEST) { ?>
-            autocomplete="off"  onkeyup="onTypeTerm(event, this)"
-            <?php } ?>
-            title="<?= tl('search_element_input_label') ?>"
-            id="query-field" name="q" value="<?php
-            if (isset($data['QUERY']) && !isset($data['NO_QUERY'])) {
-                e(urldecode($data['QUERY']));} ?>"
-            placeholder="<?= tl('search_element_input_placeholder') ?>"/>
-        </p>
-        <button class="button-box" type="submit"><img
-            src='<?=C\SHORT_BASE_URL ?>resources/search-button.png'
-            alt='<?= tl('search_element_search') ?>'/></button>
-        </form>
-        </div>
-        <div id="suggest-dropdown">
-            <ul id="suggest-results" class="suggest-list">
-            </ul>
-        </div> <?php
 
         if ($is_search_view) {
             if (!empty($data['PAGES']) && !$_SERVER["MOBILE"]) {
