@@ -8,3 +8,4 @@ work_directory/*
 !work_directory/_placeholder.php
 !work_directory/Profile.php
 !work_directory/crawl.ini
+work_directory/app/resources/*/
