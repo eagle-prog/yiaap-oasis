@@ -213,7 +213,7 @@ class CrawlDaemon implements CrawlConstants
                 self::daemonLog("Starting $name_string...", $exit_type);
                 self::daemonLog("options: $name, $subname, $options",
                     $exit_type);
-                // CrawlDaemon::start($name, $subname, $options, $exit_type);
+                CrawlDaemon::start($name, $subname, $options, $exit_type);
                 break;
             case "stop":
                 CrawlDaemon::stop($name, self::$subname);

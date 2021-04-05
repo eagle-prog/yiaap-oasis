@@ -72,56 +72,7 @@ class SearchbarElement extends Element
         ?>]</a></div><div id='nav-bar' class="nav-bar">
             <div class='inner-bar'>
             <?php $this->renderNavbar($logged_in); ?>
-            <form id="search-form" method="get" action="<?=C\SHORT_BASE_URL ?>"
-                onsubmit="processSubmit()">
-            <a href="<?= C\SHORT_BASE_URL ?><?php if ($logged_in) {
-                e("?".http_build_query($query_parts));
-                } ?>"><img src="<?php e($logo); ?>"
-                    alt="<?=tl('searchbar_element_title')?>" /></a><?php
-            $subsearch_shift = "";
-            if (!empty($data['SUBSEARCH'])) {
-                $key = array_search($data['SUBSEARCH'],
-                    array_column($data["SUBSEARCHES"], 'FOLDER_NAME'));
-                if(!empty($key)) {
-                    e(" <b id='logo-subsearch' ".
-                        " class='logo-subsearch'><a href='" .
-                        B\subsearchUrl($data['SUBSEARCH'], $logged_in).
-                        $token_string . "'>" .
-                        $data["SUBSEARCHES"][$key]['SUBSEARCH_NAME'] .
-                        "</a></b>");
-                    $subsearch_shift = 'subsearch-shift';
-                }
-            }
-            ?>
-            <span class="search-field <?=$subsearch_shift?>">
-            <?php if (isset($data["SUBSEARCH"]) && $data["SUBSEARCH"] != "") {
-                ?><input type="hidden" name="s" value="<?=
-                $data['SUBSEARCH'] ?>" />
-            <?php } ?>
-            <?php if ($logged_in) { ?>
-            <input id="csrf-token" type="hidden" name="<?= C\CSRF_TOKEN ?>"
-                value="<?= $data[C\CSRF_TOKEN] ?>" />
-            <?php } ?>
-            <input id="its-value" type="hidden" name="its" value="<?=
-                $data['its'] ?>" />
-            <input type="search" <?php if (C\WORD_SUGGEST) { ?>
-                autocomplete="off"  onkeyup="onTypeTerm(event, this)"
-                <?php } ?>
-                title="<?= tl('searchbar_element_input_label') ?>"
-                id="query-field" name="q" value="<?php
-                if (isset($data['QUERY']) && !isset($data['NO_QUERY'])) {
-                    e(urldecode($data['QUERY'])); } ?>"
-                placeholder="<?= tl('searchbar_element_input_placeholder') ?>" />
-            <button class="button-box" type="submit"><img
-                src='<?=C\SHORT_BASE_URL ?>resources/search-button.png'
-                alt='<?= tl('searchbar_element_search') ?>'/></button>
-            </span>
-            </form>
         </div>
-        </div>
-        <div id="suggest-dropdown">
-            <ul id="suggest-results" class="suggest-list">
-            </ul>
         </div>
         <?php
     }

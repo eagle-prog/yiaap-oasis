@@ -1857,14 +1857,14 @@ Yioop rather than the search boxes which can be inserted on wiki pages.
 {
     padding-right:.125in;
 }
-.landing .search-box
+.center-container .search-box
 {
     margin:auto;
     min-width: 8.1in;
     width: 8.1in;
     padding: 0px;
 }
-.landing .search-box #search-form {
+.center-container .search-box #search-form {
     display: flex;
 }
 .subsearch.search-box,
@@ -1884,7 +1884,7 @@ Yioop rather than the search boxes which can be inserted on wiki pages.
     top: 25px;
     width:90%;
 }
-.mobile .landing .search-box
+.mobile .center-container .search-box
 {
     position: relative;
     top: 10px;
@@ -1903,11 +1903,11 @@ Yioop rather than the search boxes which can be inserted on wiki pages.
     -webkit-appearance:none;
     width:6.4in;
 }
-.landing .search-box input
+.center-container .search-box input
 {
     width:7.4in;
 }
-.landing .search-box input:focus {
+.center-container .search-box input:focus {
     outline: none;
 }
 .search-box button
@@ -1936,11 +1936,11 @@ Yioop rather than the search boxes which can be inserted on wiki pages.
     min-width: 234px;
     width:80%;
 }
-.mobile .landing .search-box input
+.mobile .center-container .search-box input
 {
     font-size: 14pt;
 }
-.mobile .landing .search-box input:focus {
+.mobile .center-container .search-box input:focus {
     outline: none;
 }
 .button-box img
@@ -2126,7 +2126,7 @@ Styles for the word suggest drop down on search pages
     width: 7.12in;
     z-index:3;
 }
-.landing .dropdown
+.center-container .dropdown
 {
     left: -0.3in;
     position: relative;
@@ -2146,7 +2146,7 @@ Styles for the word suggest drop down on search pages
     visibility: hidden;
     width: 6.55in;
 }
-.landing .suggest-list
+.center-container .suggest-list
 {
     width: 7.4in;
 }
@@ -2162,7 +2162,7 @@ Styles for the word suggest drop down on search pages
     padding-right:2px;
     width: 7.08in;
 }
-.landing .suggest-list li
+.center-container .suggest-list li
 {
     width: 7.8in;
 }
@@ -3869,4 +3869,12 @@ h2.trending option
 }
 .note-editor .note-modal-content .note-modal-header {
     padding-top: 20px;
+}
+
+/* Utilities */
+.h-50 {
+    height: 50px;
+}
+.m-t-10 {
+    margin-top: 10px;
 }
