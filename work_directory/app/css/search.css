@@ -1368,6 +1368,10 @@ Styles for footers on various pages
     margin: 0.25in auto 0.25in auto;
     width: 7in;
     text-align: center;
+    font-size: 16px;
+}
+.signin-exit ul {
+    padding-inline-start: 0px;
 }
 .mobile .signin-exit
 {
@@ -1386,7 +1390,7 @@ Styles for footers on various pages
 {
     text-align:left;
     list-style-type: square;
-    margin-left:2.3in;
+    margin-left: 22px;
 }
 .html-rtl .signin-exit li
 {
@@ -1511,6 +1515,7 @@ Styles for the login, settings, and register pages
 .register button
 {
     font-size:16pt;
+    margin: 5px;
 }
 .register select
 {
