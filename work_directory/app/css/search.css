@@ -1489,6 +1489,9 @@ Styles for the login, settings, and register pages
     width: 6in;
     margin: auto;
 }
+.register span {
+    display: flex;
+}
 .login input
 {
     font-size: 16pt;
