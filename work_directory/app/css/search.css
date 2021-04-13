@@ -1366,7 +1366,6 @@ Styles for footers on various pages
 {
     clear: both;
     margin: 0.25in auto 0.25in auto;
-    width: 7in;
     text-align: center;
     font-size: 16px;
 }
@@ -1442,7 +1441,7 @@ Styles for the login, settings, and register pages
 .login
 {
     font-size: 16pt;
-    width: 5in;
+    width: fit-content;
     margin: 0 auto 0 auto;
 }
 .settings .top
@@ -3877,9 +3876,24 @@ h2.trending option
 }
 
 /* Utilities */
+.text-center {
+    text-align: center;
+}
 .h-50 {
     height: 50px;
 }
 .m-t-10 {
     margin-top: 10px;
+}
+.m-b-10 {
+    margin-bottom: 10px;
+}
+.m-r-10 {
+    margin-right: 10px;
+}
+.m-l-10 {
+    margin-left: 10px;
+}
+.p-5 {
+    padding: 5px;
 }
