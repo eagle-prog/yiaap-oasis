@@ -73,6 +73,7 @@ class VisitorModel extends Model
             $this->removeVisitor($ip_address, $page_name);
             return false;
         }
+        return false;
         return $row;
     }
     /**
