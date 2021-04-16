@@ -337,7 +337,7 @@ class RegisterController extends Controller implements CrawlConstants
         $message .= C\BASE_URL .
             "?c=register&a=emailVerification&email=".
             $user['EMAIL'].
-            "&hash=" . urlencode(L\crawlCrypt($user['HASH'])).
+            "&hash=" . L\crawlCrypt($user['HASH']).
             "&time=" . $user['CREATION_TIME'];
         $server->send($subject, C\MAIL_SENDER, $user['EMAIL'], $message);
     }
@@ -457,7 +457,7 @@ class RegisterController extends Controller implements CrawlConstants
         $message .= C\BASE_URL .
             "?c=register&a=recoverComplete&user=" .
             $user['USER_NAME'] .
-            "&hash=".urlencode(L\crawlCrypt($user['HASH'])) .
+            "&hash=".L\crawlCrypt($user['HASH']) .
             "&time=" . $time ;
         $server->send($subject, C\MAIL_SENDER, $user['EMAIL'], $message);
         unset($_SESSION['RECOVERY_ANSWERS']);

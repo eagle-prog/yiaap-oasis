@@ -83,7 +83,7 @@ nsdefine('PRIVATE_DB_PASSWORD', "");
 nsdefine('PRIVATE_DB_USER', "");
 nsdefine('PROXY_SERVERS', "");
 nsdefine('RECOVERY_MODE', "1");
-nsdefine('REGISTRATION_TYPE', "no_activation");
+nsdefine('REGISTRATION_TYPE', "email_registration");
 nsdefine('RESULT_SCORE', "true");
 nsdefine('ROBOT_INSTANCE', "www_yiaap_com-1614936208");
 nsdefine('RSS_ACCESS', "true");
