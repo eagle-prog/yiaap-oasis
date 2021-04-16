@@ -457,7 +457,8 @@ class RegisterController extends Controller implements CrawlConstants
         $message .= C\BASE_URL .
             "?c=register&a=recoverComplete&user=" .
             $user['USER_NAME'] .
-            "&hash=".L\crawlCrypt($user['HASH']) .
+            "&hash=".L\crawlCrypt(
+                $user['HASH'] . $time . $user['USER_NAME'].C\AUTH_KEY) .
             "&time=" . $time ;
         $server->send($subject, C\MAIL_SENDER, $user['EMAIL'], $message);
         unset($_SESSION['RECOVERY_ANSWERS']);
@@ -501,7 +502,8 @@ class RegisterController extends Controller implements CrawlConstants
         }
         $user_session = $user_model->getUserSession($user["USER_ID"]);
         if (isset($data['finish_hash'])) {
-            $finish_hash = urlencode(L\crawlCrypt($user['HASH'],
+            $finish_hash = urlencode(L\crawlCrypt($user['HASH'].$data["time"].
+                $user['CREATION_TIME'] . C\AUTH_KEY,
                 urldecode($data['finish_hash'])));
             if ($finish_hash != $data['finish_hash'] ||
                 (C\RECOVERY_MODE == C\EMAIL_AND_QUESTIONS_RECOVERY &&
@@ -538,7 +540,7 @@ class RegisterController extends Controller implements CrawlConstants
             }
         } else {
             $hash = L\crawlCrypt(
-                $user['HASH'],
+                $user['HASH'].$data["time"].$user['USER_NAME'].C\AUTH_KEY,
                 $data['hash']);
             if ($hash != $data['hash']) {
                 $visitor_model->updateVisitor(
@@ -571,7 +573,8 @@ class RegisterController extends Controller implements CrawlConstants
         $data["RECOVERY"] = $user_session['RECOVERY'];
         $data["REFRESH"] = "recover";
         $data["RECOVER_COMPLETE"] = true;
-        $data['finish_hash'] = urlencode(L\crawlCrypt($user['HASH']));
+        $data['finish_hash'] = urlencode(L\crawlCrypt($user['HASH'] .
+            $data["time"]. $user['CREATION_TIME'] . C\AUTH_KEY));
         return $data;
     }
     /**
