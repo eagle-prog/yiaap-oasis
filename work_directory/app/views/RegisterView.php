@@ -296,9 +296,9 @@ class RegisterView extends View
                         <input type="hidden"
                             name="<?php e(C\CSRF_TOKEN);?>"
                             value="<?php e($data[C\CSRF_TOKEN]); ?>"/>
-                            <button id="submit" type="submit"><?=
-                            tl('register_view_create_account')
-                            ?></button>
+                        <button id="submit" type="submit"><?=
+                        tl('register_view_create_account')
+                        ?></button>
                         </td>
                     </tr>
                     <tr>
