@@ -130,7 +130,7 @@ class SearchElement extends Element implements CrawlConstants
             <div class="<?=$subsearch ?> search-box">
             <form id="search-form" method="get" action="<?=C\SHORT_BASE_URL ?>"
                 onsubmit="processSubmit()">
-            <p style="padding: 0.04in;"><?php
+            <p style="padding: 0.04in; background: white;border-radius: 0.07in;"><?php
             if (isset($data["SUBSEARCH"]) && $data["SUBSEARCH"] != "") {
                 ?><input type="hidden" name="s" value="<?=
                 $data['SUBSEARCH'] ?>" /><?php
@@ -472,7 +472,7 @@ class SearchElement extends Element implements CrawlConstants
         <div class="<?=$subsearch ?> search-box">
         <form id="search-form" method="get" action="<?=C\SHORT_BASE_URL ?>"
             onsubmit="processSubmit()">
-        <p style="padding: 0.04in;"><?php
+        <p style="padding: 0.04in; background: white;border-radius: 0.07in;"><?php
         if (isset($data["SUBSEARCH"]) && $data["SUBSEARCH"] != "") {
             ?><input type="hidden" name="s" value="<?=
             $data['SUBSEARCH'] ?>" /><?php

@@ -1851,7 +1851,7 @@ Yioop rather than the search boxes which can be inserted on wiki pages.
     border-color: #AAA;
     border-radius: 0.07in;
     border-style: solid;
-    border-width: 0.02in;
+    border-width: 0px;
     padding: 0.04in;
     padding-bottom: 0.06in;
     width: 7.075in;
@@ -2453,7 +2453,7 @@ Styles for tables on login and admin pages
 .html-ltr .button-box
 {
     color: #fff;
-    background: #62a8ea;
+    background: #06a2cb;
     font-size: 16pt;
     margin-left: 0;
     position: relative;
