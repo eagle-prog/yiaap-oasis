@@ -3900,3 +3900,6 @@ h2.trending option
 .p-5 {
     padding: 5px;
 }
+.wiki-element-syntax-summary {
+    display: none;
+}
