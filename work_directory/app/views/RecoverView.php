@@ -22,7 +22,7 @@
  *
  * END LICENSE
  *
- * @author Chris Pollett chris@pollett.org
+ * @author Chris Pollett
  * @license https://www.gnu.org/licenses/ GPL3
  * @link https://www.seekquarry.com/
  * @copyright 2009 - 2021
@@ -30,26 +30,25 @@
  */
 namespace seekquarry\yioop\views;
 
-use seekquarry\yioop as B;
 use seekquarry\yioop\configs as C;
 
 /**
- * This View is responsible for drawing the login
- * screen for the admin panel of the Seek Quarry app
+ * This View is responsible for drawing the
+ * screen for recovering a forgotten password
  *
  * @author Chris Pollett
  */
-class SigninView extends ComponentView
+class RecoverView extends ComponentView
 {
     /** This view is drawn on a web layout
      * @var string
      */
     public $layout = "web";
-    
+
     public function __construct($controller_object = null)
     {
         parent::__construct($controller_object);
         $this->addContainer("top", "searchbar");
-        $this->addContainer("center", "signin");
+        $this->addContainer("center", "recover");
     }
 }
